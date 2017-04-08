@@ -9,35 +9,34 @@
     <EditText
         android:id="@+id/upc_text"
         android:layout_width="500dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="31dp"
         android:hint="Enter UPC here"
-        android:layout_marginBottom="24dp"
-        android:layout_above="@+id/buttonSearchUPC"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignBottom="@+id/buttonSearchUPC"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="600dp"
-        android:layout_height="500dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/food_pile"
         android:layout_above="@+id/buttonChangePreferences"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="30dp"
-        android:src="@drawable/food_pile" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/buttonSearchUPC"
         android:layout_width="500dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
+        android:text="Search UPC"
         android:layout_above="@+id/imageView"
-        android:layout_alignStart="@+id/upc_text"
-        android:layout_marginBottom="31dp"
-        android:text="Search UPC" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/buttonChangePreferences"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="68dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         android:text="Change Preferences"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
