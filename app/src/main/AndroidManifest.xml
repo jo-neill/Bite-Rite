@@ -22,7 +22,11 @@
             </intent-filter>
         </activity>
         <!-- ><activity android:name=".UPCScannerActivity"></activity>< -->
-        <activity android:name=".ResultsActivity"></activity>
+        <activity android:name=".ResultsActivity" />
+        <activity
+            android:name=".PreferencesActivity"
+            android:label="@string/title_activity_preferences"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

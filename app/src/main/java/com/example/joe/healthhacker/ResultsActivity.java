@@ -5,15 +5,17 @@ import android.os.Bundle;
 import android.widget.TextView;
 import com.example.joe.healthhacker.Utility.Score;
 import com.example.joe.healthhacker.Utility.Product;
-import com.example.joe.healthhacker.Utility.Score;
-
+import android.icu.text.DecimalFormat;
 public class ResultsActivity extends AppCompatActivity {
 
     public String nameTxt, scoreTxt, badTxt, fineTxt;
+    DecimalFormat formatter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+
+        formatter = new DecimalFormat("#0.0");
 
         Product prod = MainActivity.getInstance().getProduct();
         Score scoreIn = MainActivity.getInstance().getScore();
@@ -21,6 +23,11 @@ public class ResultsActivity extends AppCompatActivity {
         nameTxt = prod.getName();
         fineTxt = prod.getIngredients();
         scoreTxt = scoreIn.getScore();
+
+        double scoreTxtNum = Double.valueOf(scoreTxt);
+        formatter.format(scoreTxtNum);
+
+        scoreTxt = Double.toString(scoreTxtNum);
         badTxt = scoreIn.getBadIngredients();
 
         final TextView name = (TextView) findViewById(R.id.textName);

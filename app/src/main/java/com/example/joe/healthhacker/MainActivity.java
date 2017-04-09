@@ -32,6 +32,18 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
             }
         });
 
+        final Button buttonPrefs = (Button) findViewById(R.id.buttonChangePreferences);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setPreferences();
+            }
+        });
+
+    }
+
+    public void setPreferences(){
+        Intent intentPref = new Intent(this, PreferencesActivity.class);
+        startActivity(intentPref);
     }
 
     public static MainActivity getInstance(){
