@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Mario Brosko on 4/8/2017.
@@ -16,12 +17,7 @@ public class Product {
         name = nm;
         description = des;
         nfAllIngredients = all;
-        formatIngredients();
-    }
-
-    //Parse ingredient string for individual ingredients & add to list
-    private void formatIngredients() {
-
+        allIngredients = new ArrayList<String>(Arrays.asList(nfAllIngredients));
     }
 
     public String getIngredient(int index) {

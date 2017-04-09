@@ -10,7 +10,7 @@ public class Score {
     private double multiplier;
     private Product product;
     private ArrayList<Restriction> restrictions;
-    private ArrayList<String> fineIngredients, badIngredients;
+    private ArrayList<String> badIngredients;
 
 
     public Score() {
@@ -18,14 +18,19 @@ public class Score {
         //Instantiate the other private fields
         score = 10;
         multiplier = 1.0;
-        this.fineIngredients = new ArrayList();
-        this.badIngredients = new ArrayList();
+        badIngredients = new ArrayList();
         setInitialRestrictions();
+    }
+
+    public void refreshScore(Product prod) {
+        product = prod;
+        score = 10;
+        multiplier = 1.0;
+        badIngredients.clear();
 
     }
 
-
-    public double computeMultiplier() {
+    private void computeMultiplier() {
 
         //Get the current ingredient from the product
         for (int i = 0; i < product.numIngredients(); i++) {
@@ -61,19 +66,10 @@ public class Score {
                                 multiplier *= 0;
                             }
                         }
-
-                        //If the item ingredient is not on the restriction list
-                        //Add it to the fineIngredients list
-                        else {
-                            fineIngredients.add(productIngredient);
-                        }
-
                     }
 
             }
         }
-
-        return multiplier;
     }
 
     private void setInitialRestrictions() {
