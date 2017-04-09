@@ -12,9 +12,14 @@ public class Restriction {
     private int desirability;
     private ArrayList<String> ingredients;
     private boolean active;
+    private static int id;
+    private static int idCounter = 0;
 
     //com.example.joe.healthhacker.Utility.Restriction constructor
     Restriction(String nm, ArrayList<String> ingr, boolean act) {
+
+        id = idCounter;
+        idCounter++;
         name = nm;
         desirability = 0;
         ingredients = ingr;

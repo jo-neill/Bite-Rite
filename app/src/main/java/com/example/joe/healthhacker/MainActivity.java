@@ -1,15 +1,15 @@
 package com.example.joe.healthhacker;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.content.Intent;
-import com.example.joe.healthhacker.Utility.Product;
+import android.widget.EditText;
+
 import com.example.joe.healthhacker.Service.NutritionService;
 import com.example.joe.healthhacker.Service.NutritionServiceCallBack;
-import android.widget.EditText;
+import com.example.joe.healthhacker.Utility.Product;
 import com.example.joe.healthhacker.Utility.Score;
 public class MainActivity extends AppCompatActivity implements NutritionServiceCallBack{
 
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activityA = this;
+        appScore = new Score();
 
         final Button button = (Button) findViewById(R.id.buttonSearchUPC);
         button.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
         String upc = et.getText().toString();
         service = new NutritionService(this);
         service.refreshNutrition(upc);
-        appScore = new Score();
+
     }
 
     public void serviceSuccess(String[] itemInfo) {

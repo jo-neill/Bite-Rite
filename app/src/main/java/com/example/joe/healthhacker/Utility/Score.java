@@ -113,6 +113,14 @@ public class Score {
 
     }
 
+    public ArrayList<Restriction> getRestrictions() {
+        return restrictions;
+    }
+
+    public void setRestrictions(ArrayList<Restriction> set) {
+        restrictions = set;
+    }
+
     private void computeScore() {
         score *= multiplier;
     }
