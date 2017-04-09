@@ -4,17 +4,17 @@ import android.content.ClipData.Item;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.joe.healthhacker.Utility.Restriction;
 import com.example.joe.healthhacker.Utility.Score;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.widget.ListAdapter;
-import android.widget.Spinner;
 public class PreferencesActivity extends AppCompatActivity {
 
         private ListView listView;
@@ -34,10 +34,6 @@ public class PreferencesActivity extends AppCompatActivity {
                     saveChanges();
                 }
             });
-        }
-
-        private void saveChanges() {
-            ArrayList<Restriction> editRestrictions = editScore.getRestrictions();
 
             Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
             ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.choices, android.R.layout.simple_spinner_item);
@@ -49,6 +45,12 @@ public class PreferencesActivity extends AppCompatActivity {
             ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.choices, android.R.layout.simple_spinner_item);
             Spinner spinner5 = (Spinner) findViewById(R.id.spinner5);
             ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this, R.array.choices, android.R.layout.simple_spinner_item);
+        }
+
+        private void saveChanges() {
+            ArrayList<Restriction> editRestrictions = editScore.getRestrictions();
+
+
         }
 
 
