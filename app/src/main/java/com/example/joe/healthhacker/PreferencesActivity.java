@@ -13,6 +13,8 @@ import com.example.joe.healthhacker.Utility.Score;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.ListAdapter;
+import android.widget.Spinner;
 public class PreferencesActivity extends AppCompatActivity {
 
         private ListView listView;
@@ -37,7 +39,16 @@ public class PreferencesActivity extends AppCompatActivity {
         private void saveChanges() {
             ArrayList<Restriction> editRestrictions = editScore.getRestrictions();
 
-
+            Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+            ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.choices, android.R.layout.simple_spinner_item);
+            Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+            ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.choices, android.R.layout.simple_spinner_item);
+            Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
+            ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.choices, android.R.layout.simple_spinner_item);
+            Spinner spinner4 = (Spinner) findViewById(R.id.spinner4);
+            ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.choices, android.R.layout.simple_spinner_item);
+            Spinner spinner5 = (Spinner) findViewById(R.id.spinner5);
+            ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this, R.array.choices, android.R.layout.simple_spinner_item);
         }
 
 

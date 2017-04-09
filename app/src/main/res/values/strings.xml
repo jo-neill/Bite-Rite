@@ -2,4 +2,9 @@
     <string name="app_name">Bite Rite</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_preferences">Preferences</string>
+        <string-array name="choices">
+            <item>Dislike</item>
+            <item>Avoid</item>
+            <item>Never</item>
+        </string-array>
 </resources>
