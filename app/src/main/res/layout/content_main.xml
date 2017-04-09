@@ -40,4 +40,5 @@
         android:text="Change Preferences"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

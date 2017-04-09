@@ -1,3 +1,5 @@
+package com.example.joe.healthhacker.Utility;
+
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,7 @@ public class Restriction {
     private ArrayList<String> ingredients;
     private boolean active;
 
-    //Restriction constructor
+    //com.example.joe.healthhacker.Utility.Restriction constructor
     Restriction(String nm, boolean actv, int des, ArrayList<String> ing, boolean act) {
         name = nm;
         desirability = des;
