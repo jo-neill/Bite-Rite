@@ -14,10 +14,10 @@ public class Restriction {
     private boolean active;
 
     //com.example.joe.healthhacker.Utility.Restriction constructor
-    Restriction(String nm, boolean actv, int des, ArrayList<String> ing, boolean act) {
+    Restriction(String nm, ArrayList<String> ingr, boolean act) {
         name = nm;
-        desirability = des;
-        ingredients = ing;
+        desirability = 0;
+        ingredients = ingr;
         active = act;
     }
 

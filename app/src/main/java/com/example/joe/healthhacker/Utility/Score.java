@@ -1,6 +1,7 @@
 package com.example.joe.healthhacker.Utility;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Mario Brosko on 4/8/2017.
@@ -12,7 +13,7 @@ public class Score {
     private double multiplier;
     private Product product;
     private ArrayList<Restriction> restrictions;
-    private ArrayList<String> fineIngredients, badIngredients;
+    private ArrayList<String> badIngredients;
 
 
     public Score() {
@@ -20,21 +21,19 @@ public class Score {
         //Instantiate the other private fields
         score = 10;
         multiplier = 1.0;
-        this.fineIngredients = new ArrayList();
-        this.badIngredients = new ArrayList();
+        badIngredients = new ArrayList();
         setInitialRestrictions();
-
     }
 
+    public void refreshScore(Product prod) {
+        product = prod;
+        score = 10;
+        multiplier = 1.0;
+        badIngredients.clear();
+        computeMultiplier();
+    }
 
-    public double computeMultiplier() {
-
-        //Get the current ingredient from the product
-        for (int i = 0; i < product.numIngredients(); i++) {
-
-            String productIngredient = product.getIngredient(i);
-            //Create the boolean to determine whether the item will be added to
-            boolean badIngredient = false;
+    private void computeMultiplier() {
 
             //Get the current restriction item from the lsit of restrictions
             for (int y = 0; y < restrictions.size(); y++) {
@@ -50,10 +49,11 @@ public class Score {
                         //Check if the ingredient from the restriction equals
                         //the current ingredient from the product
                         //If it is, badIngredient is now true
-                        if (productIngredient.contains(restrictedIngredient)) {
+                        if (product.checkForIngredient(restrictedIngredient)) {
 
-                            badIngredients.add(productIngredient);
-                            badIngredient = true;
+                            if(!badIngredients.contains(currentRestriction.getName()))
+                                badIngredients.add(currentRestriction.getName());
+                            System.out.println(badIngredients);
 
                             if (currentRestriction.getDesirability() == 0) {
                                 multiplier *= .66;
@@ -63,22 +63,16 @@ public class Score {
                                 multiplier *= 0;
                             }
                         }
-
-                        //If the item ingredient is not on the restriction list
-                        //Add it to the fineIngredients list
-                        else {
-                            fineIngredients.add(productIngredient);
-                        }
-
                     }
 
             }
         }
 
-        return multiplier;
-    }
-
     private void setInitialRestrictions() {
+
+        String[] items1 = {"High Fructose Corn Syrup", "Fructose Corn Syrup"};
+        ArrayList<String> listItems1 = new ArrayList<String>(Arrays.asList(items1));
+        restrictions.add(new Restriction("Corn Syrup", listItems1, true));
 
     }
 
