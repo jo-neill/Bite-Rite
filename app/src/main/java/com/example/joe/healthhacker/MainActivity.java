@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
 
     private NutritionService service;
     private Product product;
+    
     private Score appScore;
 
     @Override
