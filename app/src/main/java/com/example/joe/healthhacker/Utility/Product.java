@@ -25,6 +25,13 @@ public class Product {
         return description;
     }
 
+    public String getIngredients() {
+        if(nfAllIngredients != null && !nfAllIngredients.isEmpty()) {
+            return nfAllIngredients;
+        }
+        return "Sorry! No ingredients listed.";
+    }
+
     public boolean checkForIngredient(String checkingFor) {
         if(nfAllIngredients.contains(checkingFor) ||
                 nfAllIngredients.toLowerCase().contains(checkingFor.toLowerCase())) {
