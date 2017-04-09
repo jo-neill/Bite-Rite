@@ -30,11 +30,14 @@ public class NutritionService {
     */
     public void refreshNutrition(String upcIn){
         this.upc = upcIn;
+        if (upc.charAt(0) == '0'){
+            upc.substring(1,upc.length());
+        }
         new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground (String... strings){
 
-                String endPoint = "https://api.nutritionix.com/v1_1/item?upc=" + strings[0] +"&appId=e2ab68f5&appKey=7afb2a33644d31940cf0fcfdd11b24de";
+                String endPoint = "https://api.nutritionix.com/v1_1/item?upc=" + strings[0] +"&appId=49f72b20&appKey=a487d5468ed7a4364804b0aa91d1c1b8";
                 try{
                     URL url = new URL(endPoint);
 

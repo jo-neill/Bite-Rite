@@ -10,6 +10,8 @@ import android.widget.EditText;
 import com.example.joe.healthhacker.Service.NutritionService;
 import com.example.joe.healthhacker.Service.NutritionServiceCallBack;
 import com.example.joe.healthhacker.Utility.Product;
+import com.example.joe.healthhacker.Utility.Restriction;
+import java.util.ArrayList;
 import com.example.joe.healthhacker.Utility.Score;
 public class MainActivity extends AppCompatActivity implements NutritionServiceCallBack{
 
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
     private Product product;
     static MainActivity activityA;
 
+    public ArrayList<Restriction> restrictions;
     private Score appScore;
 
     @Override
@@ -26,6 +29,12 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
         activityA = this;
         appScore = new Score();
 
+        try{
+            appScore.setRestrictions(PreferencesActivity.getInstance().getRestrictions());
+        }catch(Exception e){
+
+        }
+
         final Button button = (Button) findViewById(R.id.buttonSearchUPC);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -34,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
         });
 
         final Button buttonPrefs = (Button) findViewById(R.id.buttonChangePreferences);
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonPrefs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setPreferences();
             }
