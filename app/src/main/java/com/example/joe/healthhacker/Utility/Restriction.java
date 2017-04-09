@@ -29,8 +29,14 @@ public class Restriction {
         return name;
     }
 
-    public void setDesirability(int des) {
-        desirability = des;
+    public void setDesirability(String des) {
+        switch(des) {
+            case "Dislike": desirability = 0;
+                break;
+            case "Avoid": desirability = 1;
+                break;
+            default: desirability = 2;
+        }
     }
 
     public int getDesirability() {

@@ -1,19 +1,23 @@
 package com.example.joe.healthhacker;
+
 import android.os.Bundle;
-import android.widget.Toast;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import com.example.joe.healthhacker.Utility.Product;
+import android.widget.EditText;
+
 import com.example.joe.healthhacker.Service.NutritionService;
 import com.example.joe.healthhacker.Service.NutritionServiceCallBack;
-import android.widget.EditText;
+import com.example.joe.healthhacker.Utility.Product;
+import com.example.joe.healthhacker.Utility.Score;
 
 public class MainActivity extends AppCompatActivity implements NutritionServiceCallBack{
 
     private NutritionService service;
     private Product product;
+    private Score appScore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
     }
 
     public void runService(){
+        appScore = new Score();
         EditText et=(EditText)findViewById(R.id.upc_text);
         String upc = et.getText().toString();
         service = new NutritionService(this);
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NutritionServiceC
 
         product = new Product(itemName, itemDesc, ingredients);
         Log.d(itemName, itemDesc);
+        appScore.refreshScore(product);
     }
 
     public Product getProduct(){

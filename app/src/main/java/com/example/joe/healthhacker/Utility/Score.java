@@ -1,7 +1,6 @@
 package com.example.joe.healthhacker.Utility;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Mario Brosko on 4/8/2017.
@@ -29,8 +28,11 @@ public class Score {
         product = prod;
         score = 10;
         multiplier = 1.0;
-        badIngredients.clear();
+        badIngredients = new ArrayList<>();
         computeMultiplier();
+        computeScore();
+        String test = getBadIngredients();
+        //System.out.println(score);
     }
 
     private void computeMultiplier() {
@@ -51,14 +53,14 @@ public class Score {
                         //If it is, badIngredient is now true
                         if (product.checkForIngredient(restrictedIngredient)) {
 
-                            if(!badIngredients.contains(currentRestriction.getName()))
+                            if(!badIngredients.contains(currentRestriction.getName())) {
                                 badIngredients.add(currentRestriction.getName());
-                            System.out.println(badIngredients);
+                            }
 
                             if (currentRestriction.getDesirability() == 0) {
-                                multiplier *= .66;
+                                multiplier *= .75;
                             } else if (currentRestriction.getDesirability() == 1) {
-                                multiplier *= .33;
+                                multiplier *= .50;
                             } else {
                                 multiplier *= 0;
                             }
@@ -70,10 +72,57 @@ public class Score {
 
     private void setInitialRestrictions() {
 
-        String[] items1 = {"High Fructose Corn Syrup", "Fructose Corn Syrup"};
-        ArrayList<String> listItems1 = new ArrayList<String>(Arrays.asList(items1));
-        restrictions.add(new Restriction("Corn Syrup", listItems1, true));
+        restrictions = new ArrayList<>();
+
+        ArrayList<String> items1 = new ArrayList<String>();
+        items1.add("High Fructose Corn Syrup");
+        items1.add("Fructose Corn Syrup");
+        items1.add("Corn Syrup");
+        restrictions.add(new Restriction("Corn Syrup", items1, true));
+
+        ArrayList<String> items2 = new ArrayList<String>();
+        items2.add("Glutamate");
+        items2.add("Hydrolyzed");
+        items2.add("Yeast Extract");
+        restrictions.add(new Restriction("MSG", items2, true));
+
+        ArrayList<String> items3 = new ArrayList<String>();
+        items3.add("High Fructose Corn Syrup");
+        items3.add("Fructose Corn Syrup");
+        items3.add("Corn Syrup");
+        restrictions.add(new Restriction("Artificial Sweeteners", items3, true));
+
+        ArrayList<String> items4 = new ArrayList<String>();
+        items4.add("High Fructose Corn Syrup");
+        items4.add("Fructose Corn Syrup");
+        items4.add("Corn Syrup");
+        restrictions.add(new Restriction("Soy", items4, true));
+
+        ArrayList<String> items5 = new ArrayList<String>();
+        items5.add("High Fructose Corn Syrup");
+        items5.add("Fructose Corn Syrup");
+        items5.add("Corn Syrup");
+        restrictions.add(new Restriction("Nuts", items5, true));
 
     }
 
+    private void computeScore() {
+        score *= multiplier;
+    }
+
+    public String getScore() {
+        return Double.toString(score);
+    }
+
+    public String getBadIngredients() {
+        String toReturn = "";
+        for(int i = 0; i < badIngredients.size(); i++) {
+            if(i == badIngredients.size()-1)
+                toReturn = toReturn + badIngredients.get(i);
+            else
+                toReturn = toReturn + badIngredients.get(i) + ", ";
+        }
+        System.out.println(toReturn);
+        return toReturn;
+    }
 }
