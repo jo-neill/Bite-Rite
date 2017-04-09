@@ -16,6 +16,7 @@ import com.example.joe.healthhacker.Utility.Score;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class PreferencesActivity extends AppCompatActivity {
 
         private ListView listView;
