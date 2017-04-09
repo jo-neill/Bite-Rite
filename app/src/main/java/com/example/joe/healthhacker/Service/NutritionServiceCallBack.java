@@ -1,5 +1,4 @@
 package com.example.joe.healthhacker.Service;
-import com.example.joe.healthhacker.data.Channel;
 /**
  * Created by Joe on 4/8/17.
  */

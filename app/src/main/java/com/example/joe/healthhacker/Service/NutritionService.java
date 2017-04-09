@@ -1,11 +1,6 @@
 package com.example.joe.healthhacker.Service;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.example.joe.healthhacker.data.Channel;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -28,17 +23,18 @@ public class NutritionService {
         this.callback = callback;
     }
 
+    /*
     public String getupc() {
         return upc;
     }
-
+    */
     public void refreshNutrition(String upcIn){
         this.upc = upcIn;
         new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground (String... strings){
 
-                String endPoint = "https://api.nutritionix.com/v1_1/item?upc="+  strings[0] +"&appId=e198f4dd&appKey=187b8daafda3b382c18b0b62e6adf115";
+                String endPoint = "https://api.nutritionix.com/v1_1/item?upc=" + strings[0] +"&appId=e2ab68f5&appKey=7afb2a33644d31940cf0fcfdd11b24de";
                 try{
                     URL url = new URL(endPoint);
 
