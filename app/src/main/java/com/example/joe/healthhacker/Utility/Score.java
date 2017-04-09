@@ -124,7 +124,9 @@ public class Score {
     public String getBadIngredients() {
         String toReturn = "";
         for(int i = 0; i < badIngredients.size(); i++) {
-            if(i == badIngredients.size()-1)
+            if(i > badIngredients.size()-1)
+                toReturn = "Nothing bad here!";
+            else if(i == badIngredients.size()-1)
                 toReturn = toReturn + badIngredients.get(i);
             else
                 toReturn = toReturn + badIngredients.get(i) + ", ";
